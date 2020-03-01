@@ -1,0 +1,26 @@
+void printFile(char* filename, char* filename2)
+{
+    FILE* fp1 = fopen(filename, "r");
+    char str[100];
+    char* tok;
+    int stunum = 0;
+    int count = 0;
+    char* parts[100];
+    while(!feof(fp1)){
+        if(fgets(str,100,fp1)!=NULL){
+            printf("String : %s\n", str);
+            tok = strtok(str,";");
+            stunum++;
+            while(tok != NULL){
+                printf("%s ", tok);
+                parts[count] = tok;
+                printf("%s ", parts[count]);
+                tok = strtok(NULL, ";");
+                count++;
+            }
+        }
+    }
+    for(int i = 0; i <count;i++){
+        printf("%s ", parts[i]);
+    }
+}
